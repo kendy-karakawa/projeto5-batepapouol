@@ -1,6 +1,7 @@
 let mensagens = [
 
     
+    
 ];
 
 const pegarNoServidor = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
@@ -9,9 +10,10 @@ pegarNoServidor.then(chegou)
 function chegou(resposta){
     console.log(resposta.data)
     mensagens = resposta.data
+    addMensagem()
 }
 
-addMensagem()
+
 
 
 function addMensagem(){

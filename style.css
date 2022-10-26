@@ -13,7 +13,7 @@ body{
 }
 
 .container{
-    height: 600px;
+   
     width: 400px;
     
    
@@ -37,7 +37,7 @@ header{
 
 ul{
     background-color: #E5E5E5;
-    height: 600px;
+    height: 100%;
     padding-top: 100px;
     padding-bottom: 100px;
     overflow-y: scroll;
