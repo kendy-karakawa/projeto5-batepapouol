@@ -1,19 +1,48 @@
-let mensagens = [
+let mensagens = [];
+let usuario;
+let nomeUsuario;
 
-    
-    
-];
 
-const pegarNoServidor = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
-pegarNoServidor.then(chegou)
+verificarUsuario()
 
-function chegou(resposta){
-    console.log(resposta.data)
-    mensagens = resposta.data
-    addMensagem()
+function verificarUsuario(){
+    nomeUsuario = prompt("Insira um nome de usuario")
+    usuario = {name: nomeUsuario}
+
+    const envio = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario)
+    envio.then(usuarioOK)
+    envio.catch(usuarioErro)
+
+}
+
+function usuarioOK(){
+    alert("Usuario ok")
+    pegarNoServidor ()
+    setInterval(pegarNoServidor, 3000);
+}
+
+function usuarioErro(){
+    console.log("erro")
+    alert("Este nome de usuario ja foi utilizado, escolha outro.")
+    verificarUsuario()
 }
 
 
+
+
+
+function pegarNoServidor (){
+
+    const promessa = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
+    promessa.then(chegou)
+}
+
+
+function chegou(resposta){
+    //console.log(resposta.data)
+    mensagens = resposta.data
+    addMensagem()
+}
 
 
 function addMensagem(){
@@ -33,16 +62,18 @@ function addMensagem(){
         } 
         
         else if (aMendagem.type === "private_message"){
-            listaMensagens.innerHTML += 
-            `
-                <li class="private">
-                    <span class="time">(${aMendagem.time})</span> 
-                    <span> ${aMendagem.from}</span> 
-                    reservadamente para 
-                    <span>${aMendagem.to}</span>
-                    ${aMendagem.text}
-                </li>
-            `
+            if(aMendagem.from === usuario || aMendagem.to === usuario){
+                listaMensagens.innerHTML += 
+                `
+                    <li class="private">
+                        <span class="time">(${aMendagem.time})</span> 
+                        <span> ${aMendagem.from}</span> 
+                        reservadamente para 
+                        <span>${aMendagem.to}</span>
+                        ${aMendagem.text}
+                    </li>
+                `
+            }
         } 
         
         else{
@@ -55,19 +86,23 @@ function addMensagem(){
                 </li>
             `  
         }
+
+        
+
     }
+
+    ultimaMensagem ()
+    
+}
+
+function ultimaMensagem (){
+    let ultimaMensagem = document.querySelectorAll("li")
+    ultimaMensagem = ultimaMensagem[ultimaMensagem.length-1]
+    ultimaMensagem.scrollIntoView()
+
+    
 }
 
 
 
-
-
-
-/* { from : "chimbinha" , to : "dsds" , text :" mensagem digitada ", type : "message" , time : "05:47:26" },
-    { from : "chimbinha" , to : "Todos" , text :" sai da sala... ", type : "status" , time : "05:47:45" },
-    { from : "chimbinha" , to : "Todos" , text :" entra na sala... ", type : "status" , time : "05:47:58" },
-    { from : "chimbinha" , to : "xyz" , text :" mensagem digitada" , type : "private_message" , time : "05:48:04" },
-    { from : "chimbinha" , to : "Todos" , text : "sai da sala..." , type : "status" , time : "05:48:15" },
-    { from : "chimbinha" , to : "Todos" , text : "entra na sala..." , type : "status" , time : "05:48:18" },
-    { from : "chimbinha" , to : "xyz" , text : "mensagem digitada" , type : "message" , time : "05:48:23" },
-    { from : "chimbinha" , to : "Todos" , text : "sai da sala..." , type : "status" , time : "05:48:30" }*/
+//{from: 'ddddddd', to: 'Todos', text: 'sai da sala...', type: 'status', time: '03:28:15'}
