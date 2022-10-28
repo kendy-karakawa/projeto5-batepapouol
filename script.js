@@ -1,6 +1,8 @@
 let mensagens = [];
 let usuario;
 let nomeUsuario;
+let usuarioDestino = "";
+let menssagemType;
 
 
 verificarUsuario()
@@ -31,10 +33,13 @@ function usuarioErro(){
 
 function verificarConexao(){
     const verificar = axios.post("https://mock-api.driven.com.br/api/v6/uol/status",usuario)
-    
+    verificar.catch(desconectado)
 }
 
-
+function desconectado(){
+    alert("Você foi desconectado")
+    window.location.reload()
+}
 
 function pegarNoServidor (){
 
@@ -108,6 +113,40 @@ function ultimaMensagem (){
     
 }
 
+function enviarMensagem(){
 
+    let mensagemDigitada = document.querySelector("input").value
+    
+   
+
+    if (usuarioDestino === ""){
+        usuarioDestino = "Todos"
+        menssagemType = "message"
+    }
+
+    
+
+    let inputTxt = {
+    from: usuario,
+	to: usuarioDestino,
+	text: mensagemDigitada,
+	type: menssagemType  
+    }
+
+    const send = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages",inputTxt)
+    send.then(enviado)
+    send.catch(naoEnviado)
+
+}
+
+function enviado(){
+    pegarNoServidor()
+}
+
+function naoEnviado(){
+    console.log(erro.response.status)
+    //window.location.reload()
+}
 
 //{from: 'ddddddd', to: 'Todos', text: 'sai da sala...', type: 'status', time: '03:28:15'}
+// ou "private_message" para o bônus
