@@ -19,6 +19,8 @@ function usuarioOK(){
     alert("Usuario ok")
     pegarNoServidor ()
     setInterval(pegarNoServidor, 3000);
+    setInterval(verificarConexao, 5000)
+    
 }
 
 function usuarioErro(){
@@ -27,7 +29,10 @@ function usuarioErro(){
     verificarUsuario()
 }
 
-
+function verificarConexao(){
+    const verificar = axios.post("https://mock-api.driven.com.br/api/v6/uol/status",usuario)
+    
+}
 
 
 
@@ -88,7 +93,7 @@ function addMensagem(){
         }
 
         
-
+        
     }
 
     ultimaMensagem ()
