@@ -117,17 +117,14 @@ function enviarMensagem(){
 
     let mensagemDigitada = document.querySelector("input").value
     
-   
 
     if (usuarioDestino === ""){
         usuarioDestino = "Todos"
         menssagemType = "message"
     }
 
-    
-
     let inputTxt = {
-    from: usuario,
+    from: nomeUsuario,
 	to: usuarioDestino,
 	text: mensagemDigitada,
 	type: menssagemType  
@@ -141,11 +138,13 @@ function enviarMensagem(){
 
 function enviado(){
     pegarNoServidor()
+    let apagarCaixaTexto = document.querySelector("input")
+    apagarCaixaTexto.value = ""
 }
 
 function naoEnviado(){
-    console.log(erro.response.status)
-    //window.location.reload()
+    alert("Você foi desconectado")
+    window.location.reload()
 }
 
 //{from: 'ddddddd', to: 'Todos', text: 'sai da sala...', type: 'status', time: '03:28:15'}

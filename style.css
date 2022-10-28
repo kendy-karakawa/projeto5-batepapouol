@@ -83,7 +83,7 @@ footer{
     z-index: 1;
 }
 
-input{
+footer input{
     background-color: #ffffff;
     border: none; 
     padding: 12px;
@@ -96,7 +96,14 @@ input::placeholder{
     color: black;
 }
 
+.esconder{
+    display: none;
+}
 
+.tela-login{
+    background-color: #E5E5E5;
+    height: 100%;
+}
 
 
 
