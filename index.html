@@ -9,32 +9,91 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
+    
+    <div class="container ">
         <header> 
             <img src="./img/logo 1.png"/>
-            <img src="./img/Vector.png"/>
+            <ion-icon onclick="abrirMenu()"  name="people"></ion-icon>
+            
         </header>
 
-        <main>
-            <ul class="caixa-entrada">
-                
+        
+        <ul class="caixa-entrada">           
                
-            </ul>
-        </main>
+        </ul>
+        
 
         <footer>
-            <input class="escrever" placeholder="Escreva aqui..."></input>
-            <img onclick="enviarMensagem()" src="./img/Vect2or.png" >
+            <div class="cx-texto">
+                <input class="escrever" placeholder="Escreva aqui..."></input>
+                <h2></h2>
+            </div>
+            <img class="botao" onclick="enviarMensagem()" src="./img/Vect2or.png" >
+            
         </footer>
+    
     </div>
 
-    <!--<div class="tela-login">
-        <img src="./img/logo 1.png"/>
-        <input class="usuario" placeholder="Digite seu nome"></input>
-        <button> Entrar </button>
-    </div> -->
+
+        <!--bonus começa aqui-->
+
+
+        <div class="tela-login ">
+            
+            <img src="./img/logo 1.png"/>
+
+            <div class="xxx ">
+                <input data-identifier="enter-name" class="usuario" placeholder="Digite seu nome"></input>
+                <button onclick="verificarUsuario()" data-identifier="start"> Entrar </button>
+            </div>
+            
+            <img class="carregando none" src="./img/carregando.png" alt="">
+            
+        </div> 
     
+
+        <div class="tela-ativos none">
+
+            <div onclick="fecharMenu()"class="esquerda"></div>
+
+            <div class="direita">
+                <div>
+                    <h1>Escolha um contato <br> para enviar mensagem:</h1>
+                
+
+                    
+                    <div class="cx-ativo part">
+                        
+                 
+                    </div>
+                </div>
+
+                    <div class="visi">
+                        <h1>Escolha a visibilidade:</h1>
+                    
+                        <div onclick="selecionarVisibilidade(this)" class="cx ativo">
+                                <div class="tipo" data-identifier="visibility">
+                                    <ion-icon name="lock-closed"></ion-icon> 
+                                    <p>Publico</p>
+                            </div>
+                            <ion-icon class="ck " name="checkmark-sharp"></ion-icon>
+                        </div>
+
+                        <div onclick="selecionarVisibilidade(this)" class="cx ">
+                                
+                            <div class="tipo" data-identifier="visibility">
+                                <ion-icon name="lock-open"></ion-icon>  
+                                <p>Privado</p>
+                            </div>
+                            <ion-icon class="ck " name="checkmark-sharp"></ion-icon>
+                        </div>
+
+                    </div>
+                
+            </div>
+        </div>         
     
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
 </body>
