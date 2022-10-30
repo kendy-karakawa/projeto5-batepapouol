@@ -11,11 +11,11 @@ function verificarUsuario(){
    // nomeUsuario = prompt("Insira um nome de usuario")
    // usuario = {name: nomeUsuario}
 
-    //let carregar = document.queryCommandValue('.xxx')
-    //carregar.classList.add("none")
+    let carregar = document.querySelector('.login')
+    carregar.classList.add("none")
 
-    //let carregar2 = document.querySelector(".carregando")
-    //carregar2.classList.remove("none")
+    let carregar2 = document.querySelector(".carregando")
+    carregar2.classList.remove("none")
 
     nomeUsuario = document.querySelector(".usuario").value
     usuario = {name: nomeUsuario}
@@ -236,7 +236,8 @@ function atualizarParticipantes(){
 // pegar lista dos ultimos 3 onlie e inserir 
 
 
-
+usuarioDestino = "Todos"
+menssagemType = "message"
 
 
 
@@ -268,6 +269,8 @@ for (let i = 1; i < 5; i++){
     `
 
 }
+
+
 
 }
 
