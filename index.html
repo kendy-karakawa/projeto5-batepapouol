@@ -15,7 +15,7 @@
     <div class="container ">
         <header>
             <img src="./img/logo 1.png" />
-            <ion-icon onclick="abrirMenu()" name="people"></ion-icon>
+            <ion-icon onclick="abrirMenu()" name="people" data-test="open-participants" ></ion-icon>
 
         </header>
 
@@ -27,10 +27,10 @@
 
         <footer>
             <div class="cx-texto">
-                <input class="escrever" placeholder="Escreva aqui..."></input>
-                <h2></h2>
+                <input class="escrever"  data-test="input-message" placeholder="Escreva aqui..."></input>
+                <h2 data-test="recipient"></h2>
             </div>
-            <img class="botao" onclick="enviarMensagem()" src="./img/Vect2or.png">
+            <img class="botao"  data-test="send-message" onclick="enviarMensagem()" src="./img/Vect2or.png">
 
         </footer>
 
@@ -45,8 +45,8 @@
         <img src="./img/logo 1.png" />
 
         <div class="login ">
-            <input data-identifier="enter-name" class="usuario" placeholder="Digite seu nome"></input>
-            <button onclick="verificarUsuario()" data-identifier="start"> Entrar </button>
+            <input data-test="input-name" data-identifier="enter-name" class="usuario" placeholder="Digite seu nome"></input>
+            <button data-test="send-name" onclick="verificarUsuario()" data-identifier="start"> Entrar </button>
         </div>
 
         <img class="carregando none" src="./img/carregando.png" alt="">
@@ -61,6 +61,7 @@
         <div class="direita">
             <div>
                 <h1>Escolha um contato <br> para enviar mensagem:</h1>
+                
                 <div class="cx-ativo part">
                 </div>
             </div>
@@ -68,21 +69,21 @@
             <div class="visi">
                 <h1>Escolha a visibilidade:</h1>
 
-                <div onclick="selecionarVisibilidade(this)" class="cx ativo">
+                <div onclick="selecionarVisibilidade(this)" class="cx ativo" data-test="public">
                     <div class="tipo" data-identifier="visibility">
                         <ion-icon name="lock-closed"></ion-icon>
                         <p>Publico</p>
                     </div>
-                    <ion-icon class="ck " name="checkmark-sharp"></ion-icon>
+                    <ion-icon class="ck " data-test="check" name="checkmark-sharp"></ion-icon>
                 </div>
 
-                <div onclick="selecionarVisibilidade(this)" class="cx ">
+                <div onclick="selecionarVisibilidade(this)" class="cx " ata-test="private">
 
                     <div class="tipo" data-identifier="visibility">
                         <ion-icon name="lock-open"></ion-icon>
                         <p>Privado</p>
                     </div>
-                    <ion-icon class="ck " name="checkmark-sharp"></ion-icon>
+                    <ion-icon class="ck " data-test="check" name="checkmark-sharp"></ion-icon>
                 </div>
 
             </div>

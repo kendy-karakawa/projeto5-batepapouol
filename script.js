@@ -84,8 +84,10 @@ function addMensagem(){
        
         if (aMendagem.type === "status"){
             listaMensagens.innerHTML += `
-                <li class="status">
-                    <span class="time">(${aMendagem.time})</span> <span>  ${aMendagem.from}</span> ${aMendagem.text}
+                <li class="status"  data-test="message">
+                    <span class="time">(${aMendagem.time})</span> 
+                    <span>${aMendagem.from}</span> 
+                    ${aMendagem.text}
                 </li>
             `
         } 
@@ -94,7 +96,7 @@ function addMensagem(){
             if(aMendagem.from === nomeUsuario || aMendagem.to === nomeUsuario){
                 listaMensagens.innerHTML += 
                 `
-                    <li class="private">
+                    <li class="private"  data-test="message">
                         <span class="time">(${aMendagem.time})</span> 
                         <span> ${aMendagem.from}</span> 
                         reservadamente para 
@@ -108,7 +110,7 @@ function addMensagem(){
         else{
             listaMensagens.innerHTML += 
             `
-                <li class="message">
+                <li class="message"  data-test="message">
                     <span class="time">(${aMendagem.time})</span> 
                     <span>${aMendagem.from}</span>
                     para <span>${aMendagem.to}</span>: ${aMendagem.text}
@@ -246,12 +248,12 @@ lista.innerHTML = ""
 
 lista.innerHTML += 
  `
-<div onclick="selecionarPartcicipantes(this)" class="cx pt ativo">
+<div onclick="selecionarPartcicipantes(this)" class="cx pt ativo" data-test="all">
     <div class="ativos">
         <ion-icon  name="people"></ion-icon>
         <p>Todos</p>
     </div>
-    <ion-icon class="ck " name="checkmark-sharp"></ion-icon>
+    <ion-icon class="ck " name="checkmark-sharp" data-test="check"></ion-icon>
 </div>
 `
 for (let i = 1; i < 5; i++){
@@ -259,12 +261,12 @@ for (let i = 1; i < 5; i++){
 
     lista.innerHTML += 
     `
-    <div onclick="selecionarPartcicipantes(this)" class="cx pt">
+    <div onclick="selecionarPartcicipantes(this)" class="cx pt" data-test="participant">
         <div class="ativos" data-identifier="participant">
             <ion-icon name="person-circle"></ion-icon>
             <p>${oDestino.name}</p>
         </div>
-        <ion-icon class="ck " name="checkmark-sharp"></ion-icon>
+        <ion-icon class="ck " data-test="check" name="checkmark-sharp"></ion-icon>
     </div>
     `
 
@@ -273,6 +275,8 @@ for (let i = 1; i < 5; i++){
 
 
 }
+
+
 
 
 document.addEventListener("keypress", function(e) {
